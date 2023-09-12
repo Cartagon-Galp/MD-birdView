@@ -27,7 +27,7 @@ const App = () => {
   const attentionBoxText = `Hello, your user_id is: ${
     context ? context.user.id : "still loading"
   }.
-  Let's start building your amazing app, which will change the world!`;
+  Let's start building your amazing app, which will change the world!gdrtdrgt`;
 
   return (
     <div className="App">
