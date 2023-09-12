@@ -7,6 +7,7 @@ import "monday-ui-react-core/dist/main.css";
 import AttentionBox from "monday-ui-react-core/dist/AttentionBox.js";
 import Objective from "./components/Objective";
 import Box from '@mui/material/Box';
+import ItemsObjetive from "./components/ItemsObjetive";
 
 // Usage of mondaySDK example, for more information visit here: https://developer.monday.com/apps/docs/introduction-to-the-sdk/
 const monday = mondaySdk();
@@ -57,6 +58,8 @@ const App = () => {
         alignContent: "center"
       }}>
         <Objective/>
+        <p></p>
+        <ItemsObjetive/>
       </Box>
       </>
   );
