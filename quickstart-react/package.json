@@ -12,8 +12,15 @@
     "stop": "kill-port 8301 && kill-port 4049 && kill-port 4040"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@fontsource/roboto": "^5.0.8",
+    "@mui/icons-material": "^5.14.8",
+    "@mui/material": "^5.14.8",
+    "@mui/styled-engine-sc": "^5.14.8",
     "monday-sdk-js": "^0.1.4",
-    "monday-ui-react-core": "^1.54.0"
+    "monday-ui-react-core": "^1.54.0",
+    "styled-components": "^5.3.11"
   },
   "eslintConfig": {
     "extends": "react-app"

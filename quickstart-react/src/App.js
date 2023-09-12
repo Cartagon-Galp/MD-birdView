@@ -5,10 +5,21 @@ import mondaySdk from "monday-sdk-js";
 import "monday-ui-react-core/dist/main.css";
 //Explore more Monday React Components here: https://style.monday.com/
 import AttentionBox from "monday-ui-react-core/dist/AttentionBox.js";
+import Objective from "./components/Objective";
+import Box from '@mui/material/Box';
 
 // Usage of mondaySDK example, for more information visit here: https://developer.monday.com/apps/docs/introduction-to-the-sdk/
 const monday = mondaySdk();
 
+/**
+ * Represents the main application component.
+ * 
+ * The `App` component is a React component that renders the `Objective` component inside a `Box` component. 
+ * It sets up event listeners and retrieves the user's context data from the Monday platform. 
+ * The `attentionBoxText` variable includes the user's `user_id` from the context data.
+ * 
+ * @returns {JSX.Element} The rendered React component.
+ */
 const App = () => {
   const [context, setContext] = useState();
 
@@ -27,17 +38,30 @@ const App = () => {
   const attentionBoxText = `Hello, your user_id is: ${
     context ? context.user.id : "still loading"
   }.
-  Let's start building your amazing app, which will change the world!gdrtdrgt`;
+  Let's start building your amazing app, which will change the world! HOLAAAAAA`;
 
   return (
-    <div className="App">
-      <AttentionBox
+    <>
+    {/* <div className="App">
+       <AttentionBox
         title="Hello Monday Apps!"
         text={attentionBoxText}
         type="success"
       />
-    </div>
+      </div> */}
+  <p></p>
+      <Box sx={{
+        background:'white',
+        color:'blue',
+        width: 500,
+        alignContent: "center"
+      }}>
+        <Objective/>
+      </Box>
+      </>
   );
 };
 
 export default App;
+
+
