@@ -16,7 +16,7 @@ export default function BasicSelect() {
 
   useEffect(() => {
     // Tu API Key debería estar en un lugar seguro, no en el código fuente.
-    const API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjI1MDAxNTAyOCwiYWFpIjoxMSwidWlkIjo0MTk2MTI0MSwiaWFkIjoiMjAyMy0wNC0xMVQwOTowODoyNS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTI0NzU5NDUsInJnbiI6InVzZTEifQ.1doO0p1Aaj6gBqAZGfws9Tj4lUhlpC3tA-9Ke44XA5o';
+    const API_KEY = 'YOUR_API_KEY';
 
     fetch("https://api.monday.com/v2", {
       method: 'post',
