@@ -3,21 +3,24 @@ import { useState, useEffect } from "react";
 import "./App.css";
 import mondaySdk from "monday-sdk-js";
 import "monday-ui-react-core/dist/main.css";
+import { Options } from "./components/Options";
+import "./index.css";
+
 //Explore more Monday React Components here: https://style.monday.com/
 import AttentionBox from "monday-ui-react-core/dist/AttentionBox.js";
 import Objective from "./components/Objective";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 
 // Usage of mondaySDK example, for more information visit here: https://developer.monday.com/apps/docs/introduction-to-the-sdk/
 const monday = mondaySdk();
 
 /**
  * Represents the main application component.
- * 
- * The `App` component is a React component that renders the `Objective` component inside a `Box` component. 
- * It sets up event listeners and retrieves the user's context data from the Monday platform. 
+ *
+ * The `App` component is a React component that renders the `Objective` component inside a `Box` component.
+ * It sets up event listeners and retrieves the user's context data from the Monday platform.
  * The `attentionBoxText` variable includes the user's `user_id` from the context data.
- * 
+ *
  * @returns {JSX.Element} The rendered React component.
  */
 const App = () => {
@@ -42,26 +45,28 @@ const App = () => {
 
   return (
     <>
-    {/* <div className="App">
+      {/* <div className="App">
        <AttentionBox
         title="Hello Monday Apps!"
         text={attentionBoxText}
         type="success"
       />
       </div> */}
-  <p></p>
-      <Box sx={{
-        background:'white',
-        color:'blue',
-        width: 500,
-        alignContent: "center"
-      }}>
-        <Objective/>
-      </Box>
-      </>
+      {/* <Box
+        sx={{
+          background: "white",
+          color: "blue",
+          width: 500,
+          alignContent: "center",
+        }}
+      >
+        <Objective />
+      </Box> */}
+      <section className="container">
+        <Options />
+      </section>
+    </>
   );
 };
 
 export default App;
-
-

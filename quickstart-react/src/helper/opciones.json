@@ -1,0 +1,127 @@
+{
+  "opciones": [
+    {
+      "id": 1,
+      "nombre": "Opción 1",
+      "subopciones": [
+        {
+          "id": 11,
+          "nombre": "Subopción 1.1",
+          "subopciones": [
+            {
+              "id": 111,
+              "nombre": "Subopción 1.1.1",
+              "subopciones": [
+                { "id": 1111, "nombre": "Subopción 1.1.1.1" },
+                { "id": 1112, "nombre": "Subopción 1.1.2.2" },
+                { "id": 1113, "nombre": "Subopción 1.1.3.3" }
+              ]
+            },
+            {
+              "id": 112,
+              "nombre": "Subopción 1.1.2",
+              "subopciones": [
+                { "id": 1121, "nombre": "Subopción 1.1.2.1" },
+                { "id": 1122, "nombre": "Subopción 1.1.2.2" },
+                { "id": 1123, "nombre": "Subopción 1.1.2.3" }
+              ]
+            },
+            {
+              "id": 113,
+              "nombre": "Subopción 1.1.3",
+              "subopciones": [
+                { "id": 1131, "nombre": "Subopción 1.1.3.1" },
+                { "id": 1132, "nombre": "Subopción 1.1.3.2" },
+                { "id": 1133, "nombre": "Subopción 1.1.3.3" }
+              ]
+            }
+          ]
+        },
+        {
+          "id": 12,
+          "nombre": "Subopción 1.2",
+          "subopciones": [
+            { "id": 121, "nombre": "Subopción 1.2.1" },
+            { "id": 122, "nombre": "Subopción 1.2.2" },
+            { "id": 123, "nombre": "Subopción 1.2.3" }
+          ]
+        },
+        {
+          "id": 13,
+          "nombre": "Subopción 1.3",
+          "subopciones": [
+            { "id": 131, "nombre": "Subopción 1.3.1" },
+            { "id": 132, "nombre": "Subopción 1.3.2" },
+            { "id": 133, "nombre": "Subopción 1.3.3" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "nombre": "Opción 2",
+      "subopciones": [
+        {
+          "id": 21,
+          "nombre": "Subopción 2.1",
+          "subopciones": [
+            { "id": 211, "nombre": "Subopción 2.1.1" },
+            { "id": 212, "nombre": "Subopción 2.1.2" },
+            { "id": 213, "nombre": "Subopción 2.1.3" }
+          ]
+        },
+        {
+          "id": 22,
+          "nombre": "Subopción 2.2",
+          "subopciones": [
+            { "id": 221, "nombre": "Subopción 2.2.1" },
+            { "id": 222, "nombre": "Subopción 2.2.2" },
+            { "id": 223, "nombre": "Subopción 2.2.3" }
+          ]
+        },
+        {
+          "id": 23,
+          "nombre": "Subopción 2.3",
+          "subopciones": [
+            { "id": 231, "nombre": "Subopción 2.3.1" },
+            { "id": 232, "nombre": "Subopción 2.3.2" },
+            { "id": 233, "nombre": "Subopción 2.3.3" }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "nombre": "Opción 3",
+      "subopciones": [
+        {
+          "id": 31,
+          "nombre": "Subopción 3.1",
+          "subopciones": [
+            { "id": 311, "nombre": "Subopción 3.1.1" },
+            { "id": 312, "nombre": "Subopción 3.1.2" },
+            { "id": 313, "nombre": "Subopción 3.1.3" }
+          ]
+        },
+        {
+          "id": 32,
+          "nombre": "Subopción 3.2",
+          "subopciones": [
+            { "id": 321, "nombre": "Subopción 3.2.1" },
+            { "id": 322, "nombre": "Subopción 3.2.2" },
+            { "id": 323, "nombre": "Subopción 3.2.3" }
+          ]
+        },
+        {
+          "id": 33,
+          "nombre": "Subopción 3.3",
+          "subopciones": [
+            { "id": 331, "nombre": "Subopción 3.3.1" },
+            { "id": 332, "nombre": "Subopción 3.3.2" },
+            { "id": 333, "nombre": "Subopción 3.3.3" }
+          ]
+        }
+      ]
+    }
+  ]
+}

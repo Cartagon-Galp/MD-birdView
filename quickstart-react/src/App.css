@@ -1,12 +1,43 @@
-body {
-  margin: 0;
-  font-family: "Roboto", sans-serif;
+.yellow {
+  border: 1px solid rgb(255, 191, 54);
 }
 
-.App {
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.yellow::after {
+  background-color: rgb(255, 191, 54);
+}
+
+.green {
+  border: 1px solid rgb(10, 199, 10);
+}
+
+.green:first-child {
+  margin-top: 50px;
+}
+
+.green::after {
+  background-color: rgb(10, 199, 10);
+}
+
+.blue {
+  border: 1px solid rgb(112, 226, 255);
+}
+
+.blue:first-child {
+  margin-top: 100px;
+}
+
+.blue::after {
+  background-color: rgb(112, 226, 255);
+}
+
+.red {
+  border: 1px solid rgb(247, 59, 59);
+}
+
+.red::after {
+  background-color: rgb(247, 59, 59);
+}
+
+.red:first-child {
+  margin-top: 150px;
 }
