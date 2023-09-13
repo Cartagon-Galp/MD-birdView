@@ -81,6 +81,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import ItemsObjetive from './ItemsObjetive';
+import { queryMonday } from './functions';
 
 export default function BasicSelect() {
   const [selectedGroupId, setSelectedGroupId] = useState('');
@@ -89,20 +90,9 @@ export default function BasicSelect() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    const API_KEY = process.env.REACT_APP_API_KEY;
-
-    fetch("https://api.monday.com/v2", {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': API_KEY,
-        'API-Version': '2023-04'
-      },
-      body: JSON.stringify({
-        'query': 'query {boards (ids: 5107824201) {groups {title id}}}'
-      })
-    })
-      .then(response => response.json())
+    const query = 'query {boards (ids: 5107824201) {groups {title id}}}';
+  
+    queryMonday(query)
       .then(data => {
         setObjetives(data.data.boards[0].groups);
         setIsLoading(false);

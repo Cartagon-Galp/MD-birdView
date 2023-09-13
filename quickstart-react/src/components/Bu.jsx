@@ -5,6 +5,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import { queryMonday } from './functions';
 
 export default function Bu(props) {
     const bU = props;
@@ -19,47 +20,33 @@ export default function Bu(props) {
 
     useEffect(() => {
         // Tu API Key debería estar en un lugar seguro, no en el código fuente.
-        console.log('bU', bU)
-        const API_KEY = process.env.REACT_APP_API_KEY;
-        // const query = `query {boards (ids: 5107824201) {groups (ids: ${groupId.groupId}) {items {name id }}}}`;
+        console.log('bU', bU);
         const query = `query{
-        items(ids:${bU.bussinesUnit}){
-          name
-          id
-          column_values{
-            value
-            text
+          items(ids:${bU.bussinesUnit}){
+            name
+            id
+            column_values{
+              value
+              text
+            }
           }
-        }
-      }`
-        console.log('Query', query)
-
-        fetch("https://api.monday.com/v2", {
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': API_KEY,
-                'API-Version': '2023-04'
-            },
-            body: JSON.stringify({
-                'query': query
-            })
-        })
-            .then(response => response.json())
-            .then(data => {
-                // Aquí guardamos los datos en la variable boardData.
-
-                setItems(data.data.items[0].column_values);
-                setIsLoading(false);
-                console.log('Data', data)
-                console.log('setItems', data.data.items[0].column_values);
-            })
-            .catch(error => {
-                setError('Error al obtener datos. Por favor, inténtalo de nuevo más tarde.');
-                setIsLoading(false);
-                console.error('Error al obtener datos:', error);
-            });
-    }, [bU]);
+        }`;
+        console.log('Query', query);
+      
+        queryMonday(query)
+          .then(data => {
+            // Aquí guardamos los datos en la variable boardData.
+            setItems(data.data.items[0].column_values);
+            setIsLoading(false);
+            console.log('Data', data);
+            console.log('setItems', data.data.items[0].column_values);
+          })
+          .catch(error => {
+            setError('Error al obtener datos. Por favor, inténtalo de nuevo más tarde.');
+            setIsLoading(false);
+            console.error('Error al obtener datos:', error);
+          });
+      }, [bU]);
 
     return (
         <>

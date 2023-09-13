@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import Bu from './Bu';
+import { queryMonday } from './functions';
 
 export default function ItemsObjetive(props) {
 const groupId = props;
@@ -19,28 +20,17 @@ const groupId = props;
 
   useEffect(() => {
     // Tu API Key debería estar en un lugar seguro, no en el código fuente.
-    console.log('GroupID',groupId)
-    const API_KEY = process.env.REACT_APP_API_KEY;
+    console.log('GroupID', groupId)
     const query = `query {boards (ids: 5107824201) {groups (ids: ${groupId.groupId}) {items {name id }}}}`;
-    console.log('Query',query)
-
-    fetch("https://api.monday.com/v2", {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': API_KEY,
-        'API-Version': '2023-04'
-      },
-      body: JSON.stringify({
-        'query': query})
-    })
-      .then(response => response.json())
+    console.log('Query', query)
+  
+    queryMonday(query)
       .then(data => {
         // Aquí guardamos los datos en la variable boardData.
         setGroupItems(data.data.boards[0].groups[0].items);
         setIsLoading(false);
-        console.log('Data',data)
-        console.log('setGroupItems',data.data.boards[0].groups[0].items);
+        console.log('Data', data)
+        console.log('setGroupItems', data.data.boards[0].groups[0].items);
       })
       .catch(error => {
         setError('Error al obtener datos. Por favor, inténtalo de nuevo más tarde.');
@@ -88,7 +78,8 @@ const groupId = props;
       )}
       {/* <ItemsObjetive groupId={selectedGroupId} /> */}
       {itemSelected ?(
-        <Bu bussinesUnit = {itemSelected}/>
+        <Bu bussinesUnit = {itemSelected}  
+        />
       ):(
         <>Seleccione un Objetive</>
       ) }
