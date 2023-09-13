@@ -11,7 +11,7 @@
 }
 
 .green:first-child {
-  margin-top: 50px;
+  margin-top: 90px;
 }
 
 .green::after {
@@ -23,7 +23,7 @@
 }
 
 .blue:first-child {
-  margin-top: 100px;
+  margin-top: 140px;
 }
 
 .blue::after {
@@ -39,5 +39,5 @@
 }
 
 .red:first-child {
-  margin-top: 150px;
+  margin-top: 190px;
 }

@@ -11,6 +11,6 @@ body {
   display: flex;
   align-items: flex-start;
   height: 100vh;
-  padding: 50px;
+  padding: 40px;
   gap: 70px;
 }
