@@ -59,7 +59,7 @@ const App = () => {
       }}>
         <Objective/>
         <p></p>
-        <ItemsObjetive/>
+        
       </Box>
       </>
   );

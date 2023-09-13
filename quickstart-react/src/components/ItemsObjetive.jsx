@@ -5,19 +5,24 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import Bu from './Bu';
 
-export default function ItemsObjetive() {
-  const [age, setAge] = useState('');
-  const [objetives, setObjetives] = useState(null);
-  const [items, setItems] = useState(null);
+export default function ItemsObjetive(props) {
+const groupId = props;
 
-  const handleChange = (event) => {
-    setAge(event.target.value);
-  };
+  
+  const [groupItems, setGroupItems] = useState(null);
+  const [itemSelected, setItemSelected] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
 
   useEffect(() => {
     // Tu API Key debería estar en un lugar seguro, no en el código fuente.
-    const API_KEY = 'eyJhbGciOiJIUzI1NiJ9.eyJ0aWQiOjI1MDAxNTAyOCwiYWFpIjoxMSwidWlkIjo0MTk2MTI0MSwiaWFkIjoiMjAyMy0wNC0xMVQwOTowODoyNS4wMDBaIiwicGVyIjoibWU6d3JpdGUiLCJhY3RpZCI6MTI0NzU5NDUsInJnbiI6InVzZTEifQ.1doO0p1Aaj6gBqAZGfws9Tj4lUhlpC3tA-9Ke44XA5o';
+    console.log('GroupID',groupId)
+    const API_KEY = process.env.REACT_APP_API_KEY;
+    const query = `query {boards (ids: 5107824201) {groups (ids: ${groupId.groupId}) {items {name id }}}}`;
+    console.log('Query',query)
 
     fetch("https://api.monday.com/v2", {
       method: 'post',
@@ -27,45 +32,66 @@ export default function ItemsObjetive() {
         'API-Version': '2023-04'
       },
       body: JSON.stringify({
-        'query': 'query {boards (ids: 5107824201) {groups {title id}}}'
-      })
+        'query': query})
     })
       .then(response => response.json())
       .then(data => {
         // Aquí guardamos los datos en la variable boardData.
-        setObjetives(data.data.boards[0].groups);
-        console.log(data.data.boards[0].groups);
+        setGroupItems(data.data.boards[0].groups[0].items);
+        setIsLoading(false);
+        console.log('Data',data)
+        console.log('setGroupItems',data.data.boards[0].groups[0].items);
       })
       .catch(error => {
+        setError('Error al obtener datos. Por favor, inténtalo de nuevo más tarde.');
+        setIsLoading(false);
         console.error('Error al obtener datos:', error);
       });
-  }, []);
+  }, [groupId]);
 
   return (
     <>
-    {items ? (
-      <Box sx={{}}>
-        <FormControl fullWidth>
-          <InputLabel id="demo-simple-select-label" sx={{}}>Objetives Groups</InputLabel>
-          <Select
-            labelId="demo-simple-select-label"
-            id="demo-simple-select"
-            value={age}
-            label="Age"
-            onChange={handleChange}
-          >
-            
-            {objetives.map(group => (
-                <MenuItem key={group.id} value={group.id}>
-                  {group.title}
+    {isLoading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>{error}</div>
+      ) : (
+        <>
+        <p></p>
+        <Box sx={{}}>
+          <FormControl fullWidth>
+            <InputLabel id="demo-simple-select-label" sx={{}}>Objetives</InputLabel>
+            <Select
+              labelId="demo-simple-select-label"
+              id="demo-simple-select"
+              value={itemSelected}
+              label="Group"
+              onChange={(event) => setItemSelected(event.target.value)}
+            >
+              {groupItems.map(item => (
+                <MenuItem key={item.id} value={item.id}>
+                  <div>
+                    {item.name}
+                  </div>
+                  
+                  <div>
+                    status: lo q sea
+                  </div>
+                  
                 </MenuItem>
               ))}
-          </Select>
-        </FormControl>
-      </Box>
-    ) : (
-      <div></div>
-    )}
+            </Select>
+          </FormControl>
+        </Box>
+        </>
+        
+      )}
+      {/* <ItemsObjetive groupId={selectedGroupId} /> */}
+      {itemSelected ?(
+        <Bu bussinesUnit = {itemSelected}/>
+      ):(
+        <>Seleccione un Objetive</>
+      ) }
     </>
     
   );
