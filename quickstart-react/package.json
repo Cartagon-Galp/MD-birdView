@@ -20,6 +20,7 @@
     "@mui/styled-engine-sc": "^5.14.8",
     "monday-sdk-js": "^0.1.4",
     "monday-ui-react-core": "^1.54.0",
+    "react-icons": "^4.11.0",
     "styled-components": "^5.3.11"
   },
   "eslintConfig": {

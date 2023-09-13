@@ -1,27 +1,21 @@
-import * as React from 'react';
-import { useEffect, useState } from 'react';
-import Box from '@mui/material/Box';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
-import { queryMonday } from './functions';
+import * as React from "react";
+import { useEffect, useState } from "react";
+import { queryMonday } from "./functions";
+import { AiOutlineCheck } from "react-icons/ai";
 
 export default function Bu(props) {
-    const bU = props;
+  const bU = props;
 
+  const [items, setItems] = useState(null);
+  const [itemSelected, setItemSelected] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const [items, setItems] = useState(null);
-    const [itemSelected, setItemSelected] = useState(null);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-    
+  const [activeButtonIndex, setActiveButtonIndex] = useState(null);
 
-
-    useEffect(() => {
-        // Tu API Key debería estar en un lugar seguro, no en el código fuente.
-        console.log('bU', bU);
-        const query = `query{
+  useEffect(() => {
+    // Tu API Key debería estar en un lugar seguro, no en el código fuente.
+    const query = `query{
           items(ids:${bU.bussinesUnit}){
             name
             id
@@ -31,75 +25,79 @@ export default function Bu(props) {
             }
           }
         }`;
-        console.log('Query', query);
-      
-        queryMonday(query)
-          .then(data => {
-            // Aquí guardamos los datos en la variable boardData.
-            setItems(data.data.items[0].column_values);
-            setIsLoading(false);
-            console.log('Data', data);
-            console.log('setItems', data.data.items[0].column_values);
-          })
-          .catch(error => {
-            setError('Error al obtener datos. Por favor, inténtalo de nuevo más tarde.');
-            setIsLoading(false);
-            console.error('Error al obtener datos:', error);
-          });
-      }, [bU]);
 
-    return (
-        <>
-            {isLoading ? (
-                <div>Loading...</div>
-            ) : error ? (
-                <div>{error}</div>
-            ) : (
-                <>
-                    <p></p>
-                    <Box sx={{}}>
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label" sx={{}}>Bussines Unit</InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={itemSelected}
-                                label="Group"
-                                onChange={(event) => setItemSelected(event.target.value)}
-                            >
-                                {items.map(item => {
-                                    if (item.value) {
+    queryMonday(query)
+      .then((data) => {
+        // Aquí guardamos los datos en la variable boardData.
+        setItems(data.data.items[0].column_values);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        setError(
+          "Error al obtener datos. Por favor, inténtalo de nuevo más tarde."
+        );
+      });
+  }, [bU]);
 
-                                        console.log('item en primer if',item.value)
-                                        console.log('Type de item.value',typeof item.value)
-                                        const itemValueJSON = JSON.parse(item.value);
-                                        console.log('itemValueJSON',itemValueJSON)
-                                        console.log('Type of itemValueJSON',typeof itemValueJSON)
-
-                                        if (itemValueJSON.linkedPulseIds) {
-
-                                            console.log('item.text en segundo if',item.text)
-                                            const textArray = item.text.split(',');
-                                            console.log('item en segundo if', itemValueJSON.linkedPulseIds);
-                                            console.log('Type de item en segundo if', typeof itemValueJSON.linkedPulseIds);
-                                            return itemValueJSON.linkedPulseIds.map((linkedpulse,index) => (
-                                              <MenuItem key={linkedpulse.linkedPulseId} value={linkedpulse.linkedPulseId}>
-                                                {linkedpulse.linkedPulseId}, ---- {textArray[index]}
-                                              </MenuItem>
-                                            ));
-                                          }
-                                        }
-                                        return null; // Retorna null para excluir elementos sin valor
-                                      })}
-
-                            </Select>
-                        </FormControl>
-                    </Box>
-                </>
-
-            )}
-            {/* <ItemsObjetive groupId={selectedGroupId} /> */}
-        </>
-
+  const handleSelectChange = (index) => {
+    setActiveButtonIndex(index);
+    setItemSelected(index);
+    console.log(
+      "// En setItemSelected del archivo Bu.jsx le he metido linkedpulse.linkedPulse, para que le eches un vistazo"
     );
+  };
+
+  // En setItemSelected del archivo Bu.jsx le he metido linkedpulse.linkedPulse, para que le eches un vistazo
+
+  return (
+    <>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : error ? (
+        <div>{error}</div>
+      ) : (
+        <>
+          <div className="button-container">
+            {items.map((item) => {
+              if (item.value) {
+                const itemValueJSON = JSON.parse(item.value);
+                if (itemValueJSON.linkedPulseIds) {
+                  const textArray = item.text.split(",");
+                  return itemValueJSON.linkedPulseIds.map(
+                    (linkedpulse, index) => (
+                      <button
+                        key={linkedpulse.linkedPulseId}
+                        onClick={() =>
+                          handleSelectChange(linkedpulse.linkedPulseId)
+                        }
+                        className="button blue"
+                        style={{
+                          backgroundColor:
+                            activeButtonIndex === linkedpulse.linkedPulseId
+                              ? "rgba(112, 226, 255, 0.7)"
+                              : "white",
+                          color:
+                            activeButtonIndex === linkedpulse.linkedPulseId &&
+                            "white",
+                        }}
+                      >
+                        <div className="left">
+                          <AiOutlineCheck />
+                        </div>
+                        <div className="right">
+                          {linkedpulse.linkedPulseId}, ---- {textArray[index]}.
+                        </div>
+                      </button>
+                    )
+                  );
+                }
+              }
+              return null; // Retorna null para excluir elementos sin valor
+            })}
+          </div>
+        </>
+      )}
+      {/* <ItemsObjetive groupId={selectedGroupId} /> */}
+    </>
+  );
 }

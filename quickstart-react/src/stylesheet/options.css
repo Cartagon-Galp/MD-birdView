@@ -1,0 +1,65 @@
+.button-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.25em;
+}
+
+.button-container:first-child {
+  margin-left: 0;
+}
+
+.button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 8px 15px;
+  margin-top: 40px;
+  border-radius: 15px;
+  font-size: 20px;
+  padding-left: 10px;
+  color: darkgrey;
+  cursor: pointer;
+  animation-duration: 2s;
+  animation-name: opacity;
+}
+
+.button::after {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 100%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+  transition: background 0.3s ease;
+}
+
+.left {
+  z-index: 1;
+  margin-top: 3px;
+  color: white;
+}
+
+.button:hover::after {
+  background-color: rgb(255, 255, 255);
+}
+
+.button:hover .left {
+  color: darkgray;
+}
+
+.right {
+  margin-left: 15px;
+}
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
