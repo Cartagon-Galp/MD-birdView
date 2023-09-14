@@ -3,8 +3,14 @@ import React, { useEffect, useState } from "react";
 import { queryMonday } from "./functions";
 import "../stylesheet/options.css";
 import ItemsObjetive from "./ItemsObjetive";
+import { Arrow } from "./Arrow";
 
-export default function BasicSelect() {
+export default function BasicSelect({
+  isBuVisible,
+  setIsBuVisible,
+  isInVisible,
+  setIsInVisible,
+}) {
   const [selectedGroupId, setSelectedGroupId] = useState("");
   const [objetives, setObjetives] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -31,6 +37,8 @@ export default function BasicSelect() {
   const handleSelectChange = (index) => {
     setActiveButtonIndex(index);
     setSelectedGroupId(index);
+    setTimeout(() => setIsBuVisible(false), 270);
+    setTimeout(() => setIsInVisible(false), 270);
   };
 
   return (
@@ -60,13 +68,24 @@ export default function BasicSelect() {
                   <TbArticle />
                 </div>
                 <div className="right">{group.title}</div>
+                <div className="arrow">
+                  {activeButtonIndex === group.id && (
+                    <Arrow color="rgba(255, 191, 54, 0.7)" />
+                  )}
+                </div>
               </button>
             ))}
           </div>
         </>
       )}
       {selectedGroupId ? (
-        <ItemsObjetive groupId={selectedGroupId} />
+        <ItemsObjetive
+          groupId={selectedGroupId}
+          isBuVisible={isBuVisible}
+          setIsBuVisible={setIsBuVisible}
+          isInVisible={isInVisible}
+          setIsInVisible={setIsInVisible}
+        />
       ) : (
         <>Seleccione un Grupo de Objetives</>
       )}

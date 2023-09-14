@@ -8,8 +8,6 @@ body {
 }
 
 .container {
-  display: flex;
-  align-items: flex-start;
   height: 100vh;
   padding: 50px;
   gap: 70px;

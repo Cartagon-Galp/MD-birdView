@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import Bu from "./Bu";
 import { queryMonday } from "./functions";
 import { VscChecklist } from "react-icons/vsc";
+import { Arrow } from "./Arrow";
 
 export default function ItemsObjetive(props) {
   const groupId = props;
 
   const [groupItems, setGroupItems] = useState(null);
-  const [itemSelected, setItemSelected] = useState(null);
+  const [itemObjetiveSelected, setItemObjetiveSelected] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -31,9 +32,15 @@ export default function ItemsObjetive(props) {
       });
   }, [groupId]);
 
+  useEffect(() => {
+    setTimeout(() => setActiveButtonIndex(null), 300);
+  }, [props.groupId]);
+
   const handleSelectChange = (index) => {
     setActiveButtonIndex(index);
-    setItemSelected(index);
+    setItemObjetiveSelected(index);
+    setTimeout(() => props.setIsBuVisible(true), 300);
+    setTimeout(() => props.setIsInVisible(false), 270);
   };
 
   return (
@@ -63,14 +70,24 @@ export default function ItemsObjetive(props) {
                   <VscChecklist />
                 </div>
                 <div className="right">{item.name}</div>
+                <div className="arrow">
+                  {activeButtonIndex === item.id && (
+                    <Arrow color="rgba(10, 199, 10, 0.5)" />
+                  )}
+                </div>
               </button>
             ))}
           </div>
         </>
       )}
-      {/* <ItemsObjetive groupId={selectedGroupId} /> */}
-      {itemSelected ? (
-        <Bu bussinesUnit={itemSelected} />
+      {itemObjetiveSelected ? (
+        <Bu
+          bussinesUnit={itemObjetiveSelected}
+          isBuVisible={props.isBuVisible}
+          isInVisible={props.isInVisible}
+          setIsInVisible={props.setIsInVisible}
+          groupId={props.groupId}
+        />
       ) : (
         <>Seleccione un Objetive</>
       )}

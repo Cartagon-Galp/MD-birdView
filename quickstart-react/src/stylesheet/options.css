@@ -1,11 +1,15 @@
 .button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  margin-top: 90px;
   position: relative;
-  overflow: hidden;
   border-radius: 0.25em;
 }
 
 .button-container:first-child {
-  margin-left: 0;
+  margin-top: 30px;
 }
 
 .button {
@@ -14,7 +18,6 @@
   align-items: center;
   background-color: white;
   padding: 8px 15px;
-  margin-top: 40px;
   border-radius: 15px;
   font-size: 20px;
   padding-left: 10px;
@@ -52,6 +55,15 @@
 
 .right {
   margin-left: 15px;
+}
+
+.arrow {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  animation-duration: 2s;
+  animation-name: opacity;
 }
 
 @keyframes opacity {

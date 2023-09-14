@@ -10,20 +10,12 @@
   border: 1px solid rgb(10, 199, 10);
 }
 
-.green:first-child {
-  margin-top: 50px;
-}
-
 .green::after {
   background-color: rgb(10, 199, 10);
 }
 
 .blue {
   border: 1px solid rgb(112, 226, 255);
-}
-
-.blue:first-child {
-  margin-top: 100px;
 }
 
 .blue::after {
@@ -36,8 +28,4 @@
 
 .red::after {
   background-color: rgb(247, 59, 59);
-}
-
-.red:first-child {
-  margin-top: 150px;
 }
