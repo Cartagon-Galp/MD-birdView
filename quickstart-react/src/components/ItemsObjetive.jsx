@@ -40,7 +40,7 @@ export default function ItemsObjetive(props) {
     setActiveButtonIndex(index);
     setItemObjetiveSelected(index);
     setTimeout(() => props.setIsBuVisible(true), 300);
-    setTimeout(() => props.setIsInVisible(false), 270);
+    setTimeout(() => props.setIsInVisible(false), 290);
   };
 
   return (

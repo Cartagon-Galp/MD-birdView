@@ -91,11 +91,11 @@ export const Initiatives = ({
                         <div className="right">
                           {dato.linkedPulseId}, ---- {textArray[i]}.
                         </div>
-                        <div className="arrow">
+                        {/* <div className="arrow">
                           {activeButtonIndex === dato.linkedPulseId && (
                             <Arrow color="rgba(247, 59, 59, 0.7)" />
                           )}
-                        </div>
+                        </div> */}
                       </button>
                     ));
                   }
