@@ -6,27 +6,23 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { queryMonday } from './functions';
-import Initiatives from './Initiatives';
 
-export default function Bu({bussinesUnit,groupId}) {
-    // const bU = props;
-    console.log('Bu props bussinesUnit',bussinesUnit)
-    console.log('Bu props groupId',groupId)
-    
+export default function Initiatives(props) {
+    const bU = props;
+
 
     const [items, setItems] = useState(null);
     const [itemSelected, setItemSelected] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [initiatives, setInitiatives] = useState(null);
     
 
 
     useEffect(() => {
         // Tu API Key debería estar en un lugar seguro, no en el código fuente.
-        console.log('bU', );
+        console.log('bU', bU);
         const query = `query{
-          items(ids:${bussinesUnit}){
+          items(ids:${bU.bussinesUnit}){
             name
             id
             column_values{
@@ -50,7 +46,7 @@ export default function Bu({bussinesUnit,groupId}) {
             setIsLoading(false);
             console.error('Error al obtener datos:', error);
           });
-      }, [bussinesUnit]);
+      }, [bU]);
 
     return (
         <>
@@ -69,7 +65,7 @@ export default function Bu({bussinesUnit,groupId}) {
                                 id="demo-simple-select"
                                 value={itemSelected}
                                 label="Group"
-                                onChange={(event) => setInitiatives(event.target.value)}
+                                onChange={(event) => setItemSelected(event.target.value)}
                             >
                                 {items.map(item => {
                                     if (item.value) {
@@ -98,19 +94,12 @@ export default function Bu({bussinesUnit,groupId}) {
 
                             </Select>
                         </FormControl>
-                        
                     </Box>
                 </>
 
             )}
             {/* <ItemsObjetive groupId={selectedGroupId} /> */}
-            {/* {initiatives ?(
-        <Initiatives initiatives={initiatives}/>
-      ):(
-        <>Seleccione un Objetive</>
-      ) } */}
-    </>
-        
+        </>
 
     );
 }

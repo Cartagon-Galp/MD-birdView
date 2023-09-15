@@ -78,8 +78,7 @@ const groupId = props;
       )}
       {/* <ItemsObjetive groupId={selectedGroupId} /> */}
       {itemSelected ?(
-        <Bu bussinesUnit = {itemSelected} groupId = {groupId}  
-        />
+        <Bu bussinesUnit = {itemSelected} groupId = {groupId} />
       ):(
         <>Seleccione un Objetive</>
       ) }
