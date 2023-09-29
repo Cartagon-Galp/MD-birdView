@@ -17,7 +17,15 @@ export default function ItemsObjetive(props) {
 
   useEffect(() => {
     // Tu API Key debería estar en un lugar seguro, no en el código fuente.
-    const query = `query {boards (ids: 5107824201) {groups (ids: ${groupId.groupId}) {items {name id }}}}`;
+    const query = `query 
+    {boards (ids: 5107824201) 
+      {groups (ids: ${props.groupId}) 
+      {items 
+        {name 
+          id }
+        }
+      }
+    }`;
 
     queryMonday(query)
       .then((data) => {

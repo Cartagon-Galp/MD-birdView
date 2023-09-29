@@ -1,5 +1,6 @@
 .button-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 50px;
@@ -16,12 +17,11 @@
   position: relative;
   display: flex;
   align-items: center;
-  background-color: white;
   padding: 8px 15px;
-  border-radius: 15px;
+  border-radius: 17px;
+  color: gray;
   font-size: 20px;
   padding-left: 10px;
-  color: darkgrey;
   cursor: pointer;
   animation-duration: 2s;
   animation-name: opacity;
@@ -42,7 +42,7 @@
 .left {
   z-index: 1;
   margin-top: 3px;
-  color: white;
+  color: darkgray;
 }
 
 .button:hover::after {
@@ -64,6 +64,42 @@
   transform: translate(-50%, 0%);
   animation-duration: 2s;
   animation-name: opacity;
+}
+
+.selected {
+  color: white;
+  background-color: rgb(255, 227, 100);
+  animation-name: selected2;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+}
+
+/* @keyframes selected {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+} */
+
+@keyframes selected2 {
+  0% {
+    transform: translateY(0%);
+  }
+
+  50% {
+    transform: translateY(10%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
 }
 
 @keyframes opacity {

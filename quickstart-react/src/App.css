@@ -1,31 +1,112 @@
-.yellow {
-  border: 1px solid rgb(255, 191, 54);
+.orange {
+  background-color: rgba(255, 191, 54, 0.3);
+  border: 1px solid rgba(132, 132, 133, 0.5);
+  transition: all 0.4s ease;
 }
 
-.yellow::after {
-  background-color: rgb(255, 191, 54);
+.orange::after {
+  background-color: rgba(229, 231, 231, 0.5);
 }
 
 .green {
-  border: 1px solid rgb(10, 199, 10);
+  background-color: rgba(10, 199, 10, 0.3);
+  border: 1px solid rgba(132, 132, 133, 0.5);
+  transition: all 0.4s ease;
 }
 
 .green::after {
-  background-color: rgb(10, 199, 10);
+  background-color: rgba(229, 231, 231, 0.5);
 }
 
 .blue {
-  border: 1px solid rgb(112, 226, 255);
+  background-color: rgba(112, 226, 255, 0.3);
+  border: 1px solid rgba(132, 132, 133, 0.5);
+  transition: all 0.4s ease;
 }
 
 .blue::after {
-  background-color: rgb(112, 226, 255);
+  background-color: rgba(229, 231, 231, 0.5);
 }
 
 .red {
-  border: 1px solid rgb(247, 59, 59);
+  background-color: rgba(247, 59, 59, 0.3);
+  border: 1px solid rgba(132, 132, 133, 0.5);
+  transition: all 0.4s ease;
 }
 
 .red::after {
-  background-color: rgb(247, 59, 59);
+  background-color: rgba(229, 231, 231, 0.5);
+}
+
+.pink {
+  background-color: rgb(241, 105, 139, 0.3);
+  border: 1px solid rgba(132, 132, 133, 0.5);
+  transition: all 0.4s ease;
+}
+
+.pink::after {
+  background-color: rgba(229, 231, 231, 0.5);
+}
+
+.blue-sea {
+  background-color: rgba(131, 241, 236, 0.3);
+  border: 1px solid rgba(132, 132, 133, 0.5);
+  transition: all 0.4s ease;
+}
+
+.blue-sea::after {
+  background-color: rgba(229, 231, 231, 0.5);
+}
+
+.purple {
+  background-color: rgba(176, 140, 241, 0.3);
+  border: 1px solid rgba(132, 132, 133, 0.5);
+  transition: all 0.4s ease;
+}
+
+.purple::after {
+  background-color: rgba(229, 231, 231, 0.5);
+}
+
+.yellow {
+  background-color: rgba(255, 227, 100, 0.3);
+  border: 1px solid rgba(132, 132, 133, 0.5);
+  transition: all 0.4s ease;
+}
+
+.yellow::after {
+  background-color: rgba(229, 231, 231, 0.5);
+}
+
+.green-soft {
+  background-color: rgba(78, 240, 164, 0.3);
+  border: 1px solid rgba(132, 132, 133, 0.5);
+  transition: all 0.4s ease;
+}
+
+.green-soft::after {
+  background-color: rgba(229, 231, 231, 0.5);
+}
+
+.blue-hard {
+  background-color: rgba(94, 163, 243, 0.3);
+  border: 1px solid rgba(132, 132, 133, 0.5);
+  transition: all 0.4s ease;
+}
+
+.blue-hard::after {
+  background-color: rgba(229, 231, 231, 0.5);
+}
+
+.default {
+  border: 1px solid rgb(132, 132, 133);
+}
+
+.default::after {
+  background-color: rgba(132, 132, 133, 0.2);
+}
+
+.option {
+  background-color: rgba(255, 227, 100, 0.8);
+  transition: all 0.4s ease;
 }
